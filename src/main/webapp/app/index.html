@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="store">
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.3/nv.d3.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.3/nv.d3.min.css"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-nvd3/1.0.7/angular-nvd3.min.js"></script>
+    
+    
+    
+    <script type="text/javascript" src="app.js"></script>
+  </head>
+  <label>Search: <input ng-model="filter"> </label>
+  <body ng-controller="StoreController as store">
+  	<nvd3 options='store.options' data='store.data'></nvd3>
+    <div ng-repeat="result in store.result.data | filter:{ name: filter }">
+    <ul>
+    	<li>{{result.name}} <span class="label label-primary">{{result.zipcode}}</span></li>
+    	
+    </ul>
+    </div>
+    <h1></h1>
+  </body>
+</html>
